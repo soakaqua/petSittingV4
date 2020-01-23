@@ -2,24 +2,18 @@ package services;
 
 import java.util.Optional;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Version;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import model.Compte;
 import repositories.ServiceRepository;
 
 @Service
 public class ServiceService {
- 
-	
+
+
 	@Autowired
 	private static ServiceRepository servicerepository;
+<<<<<<< HEAD
 	
 	
 	
@@ -40,6 +34,20 @@ public class ServiceService {
 			serviceRepository.save(s);
 			return s;
 		}
+=======
+
+	public model.Service save(model.Service s) {
+
+		model.Service serviceEnBase=null;
+		if (s.getNumSer()!=null) {
+			Optional<model.Service>opt=servicerepository.findById(s.getNumSer());
+			serviceEnBase=opt.get();
+			serviceEnBase.setNomSer((s.getNomSer()!=null)?s.getNomSer():serviceEnBase.getNomSer());
+			serviceEnBase.setPrix((s.getPrix());
+
+		}
+	}
+>>>>>>> 38dcf1d8da2be2136a9f24b6a80c08b7e79e037d
 }
 
  //@Id

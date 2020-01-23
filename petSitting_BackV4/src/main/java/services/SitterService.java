@@ -1,14 +1,6 @@
 package services;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import model.Annonce;
-
-import model.Reponse;
-import model.ReponsePK;
-import model.Sitter;
 
 @Service
 public class SitterService {
