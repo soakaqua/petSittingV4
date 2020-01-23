@@ -22,7 +22,7 @@
 		<!-- tx : on créé un répertoire de balise qui s'appelle tx:qqch, balises de transaction -->
 
 <context:annotation-config/> <!-- balise qui permet d'activer des annotations -->
-<context:component-scan base-package="dao"/> <!-- balise qui active l'annotation component, donc repository qui en est un dérivé -->
+<context:component-scan base-package="dao,services"/> <!-- balise qui active l'annotation component, donc repository qui en est un dérivé -->
 <context:property-placeholder location="classpath:config.properties"/> <!-- Lie avec le fichier properties -->
 <jpa:repositories base-package="repositories"/>
 
