@@ -28,12 +28,11 @@ public class testS {
 		
 	}
 
-//	@Transactional //ça marche aussi sans transactional et commit
+	@Transactional //ça marche aussi sans transactional et commit
 	@Test
-//  @Commit   
+    @Commit   
 	public void insertService () {
-		//faut commenter le getnumser pour que ça marche j pense que cest lié à la generated valu de l'Id numser
-
+		
 		Service s= new Service();
 		s.setNomSer("GARDE CHAT");
 		s.setPrix(25);
