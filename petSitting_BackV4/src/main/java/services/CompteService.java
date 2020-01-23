@@ -31,13 +31,7 @@ public class CompteService {
 		else {
 			compteRepository.save(c);
 			return c;
-//			boolean erreur = false;
-//			if(c.getMail()==null) {
-//				erreur = true;
-//			}
-//			if(c.getMdpC()==null) {
-//				erreur = true;
-//			}
+
 		}
 		
 		
