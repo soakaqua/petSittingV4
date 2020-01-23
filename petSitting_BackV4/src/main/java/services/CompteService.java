@@ -31,49 +31,7 @@ public class CompteService {
 		else {
 			compteRepository.save(c);
 			return c;
-		
-			
-			
-				
-				
-				
-//             public Annonce save(Annonce c) {
-//								
-//				Annonce annonceEnBase = null;
-//				if(c.getNumA()!=0) {
-//					Optional<Annonce> opt = annonceRepository.findById(c.getNumC());
-//					annonceEnBase = opt.get();
-//					annonceEnBase.setTitre((c.getTitre()!=null)?c.getTitre():annonceEnBase.getTitre());
-//					annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
-//					annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
-//					annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
-//					annonceEnBase.setNumC((c.getNumC()!=0)?c.getNumC():annonceEnBase.getNumC());
-//					annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
-//					annonceRepository.save(annonceEnBase);
-//					return annonceEnBase;
-//				}
-//				else {
-//					annonceRepository.save(c);
-//					return c;
-//				}	
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-//			boolean erreur = false;
-//			if(c.getMail()==null) {
-//				erreur = true;
-//			}
-//			if(c.getMdpC()==null) {
-//				erreur = true;
-//			}
+
 		}
 		
 		
