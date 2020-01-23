@@ -14,24 +14,24 @@ import org.springframework.stereotype.Service;
 import model.Compte;
 import repositories.ServiceRepository;
 
-//@Service
-//public class ServiceService {
-// 
-//	
-//	@Autowired
-//	private static ServiceRepository servicerepository;
-//	
-// public Service save(Service s) {
-//		
-//		Service serviceEnBase=null;
-//		if (s.getNumSer()!=null) {
-//			Optional<Service>opt=servicerepository.findById(s.getNumSer());
-//			serviceEnBase=opt.get();
-//	serviceEnBase.setNomSer((s.getNomSer()!=null)s.getNomSer():serviceEnBase.getNomSer());
-//	serviceEnBase.setPrix((s.getPrix())
-//
-//}
-//}
+@Service
+public class ServiceService {
+ 
+	
+	@Autowired
+	private static ServiceRepository servicerepository;
+	
+ public Service save(Service s) {
+		
+		Service serviceEnBase=null;
+		if (s.getNumSer()!=null) {
+			Optional<Service>opt=servicerepository.findById(s.getNumSer());
+			serviceEnBase=opt.get();
+	serviceEnBase.setNomSer((s.getNomSer()!=null)s.getNomSer():serviceEnBase.getNomSer());
+	serviceEnBase.setPrix((s.getPrix())
+
+}
+}
  //@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqService")
 //	private Integer numSer;
