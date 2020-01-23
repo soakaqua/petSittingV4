@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,6 +19,16 @@ import javax.persistence.Version;
 @Entity
 @Table(name="annonce")
 @SequenceGenerator(name="seqAnnonce",sequenceName="seq_annonce",initialValue=100,allocationSize=1) 
+
+@NamedQueries
+({@NamedQuery(name="Annonce.selectAnnonceByProprio",query="select distinct p from Annonce p where p.numC=?1"),
+@NamedQuery(name="Annonce.afficherAnnoncesTerminees",query="select p from Annonce p where p.statut=1 and p.numC=?1"),
+@NamedQuery(name="Annonce.selectAnnonceBySitter",query="select distinct a from Annonce a left join fetch a.reponse rep where rep.key.sitter.numC=?1"),
+//@NamedQuery(name="Annonce.selectSittersByReponseValidee",query="select distinct s from Sitter s left join fetch s.reponse rep where rep.key.numA=?1"), 
+//@NamedQuery(name="Annonce.selectNoteSitter",query="select distinct noteS from Sitter s left join fetch s.annonce ann where ann.key.numC=?1"),
+@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0")}) 
+
+
 public class Annonce {
 	
 	@Id
