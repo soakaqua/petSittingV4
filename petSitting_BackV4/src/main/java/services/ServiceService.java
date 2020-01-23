@@ -21,17 +21,27 @@ public class ServiceService {
 	@Autowired
 	private static ServiceRepository servicerepository;
 	
+	
+	
  public Service save(Service s) {
 		
-		Service serviceEnBase=null;
-		if (s.getNumSer()!=null) {
-			Optional<Service>opt=servicerepository.findById(s.getNumSer());
-			serviceEnBase=opt.get();
-	serviceEnBase.setNomSer((s.getNomSer()!=null)s.getNomSer():serviceEnBase.getNomSer());
-	serviceEnBase.setPrix((s.getPrix())
+	Service serviceEnBase=null;
+	if (s.getNumSer()!=null) {
+	Optional<Service>opt=servicerepository.findById(s.getNumSer());
+	serviceEnBase=opt.get();
+	serviceEnBase.setNomSer((s.getNomSer()!=null)?s.getNomSer():serviceEnBase.getNomSer());
+	serviceEnBase.setPrix((s.getPrix()!=null)?s.getPrix():serviceEnBase.getPrix());
+	serviceRepository.save(serviceEnBase);
+	return serviceEnBase;
+		}
+		
+		else
+		{
+			serviceRepository.save(s);
+			return s;
+		}
+}
 
-}
-}
  //@Id
 //	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqService")
 //	private Integer numSer;
