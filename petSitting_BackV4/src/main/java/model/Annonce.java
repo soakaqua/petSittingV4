@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -17,11 +19,22 @@ import javax.persistence.Version;
 @Entity
 @Table(name="annonce")
 @SequenceGenerator(name="seqAnnonce",sequenceName="seq_annonce",initialValue=100,allocationSize=1) 
+
+@NamedQueries
+({@NamedQuery(name="Annonce.selectAnnonceByProprio",query="select distinct p from Annonce p where p.numC=?1"),
+@NamedQuery(name="Annonce.afficherAnnoncesTerminees",query="select p from Annonce p where p.statut=1 and p.numC=?1"),
+@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0"),
+@NamedQuery(name="Annonce.selectAnnonceBySitter",query="select distinct a from Annonce a left join fetch a.reponse rep where rep.key.sitter.numC=?1"),
+//@NamedQuery(name="Annonce.selectSittersByReponseValidee",query="select distinct s from Sitter s left join fetch s.reponse rep where rep.key.numA=?1"), 
+//@NamedQuery(name="Annonce.selectNoteSitter",query="select distinct noteS from Sitter s left join fetch s.annonce ann where ann.key.numC=?1"),
+}) 
+
+
 public class Annonce {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqAnnonce") 
-	private int numA ;
+	private Integer numA ;
 	@Column(length=500,nullable=false)
 	private String titre;
 	@Column(length=1000,nullable=false, name="message")
@@ -33,7 +46,7 @@ public class Annonce {
 	@Column
 	private int statut;
 	@Column
-	private int numC;
+	private Integer numC;
 	@Column(name="key")
 	@OneToMany(mappedBy="key.annonce") //fausse erreur. Coonexion virtuelle, ne modifie pas la table
 	private Set<Annonce_Service> annonce_service;
@@ -51,7 +64,7 @@ public class Annonce {
 		
 	}
 	
-	public Annonce(String titre, String message, int numC, Set<Annonce_Service> listService) {
+	public Annonce(String titre, String message, Integer numC, Set<Annonce_Service> listService) {
 		this.titre = titre;
 		this.message = message;
 		this.statut = 0;
@@ -59,7 +72,7 @@ public class Annonce {
 		this.annonce_service = null;
 	}
 	
-	public Annonce(int numA, String titre, String message, Set<Annonce_Service> listService) {
+	public Annonce(Integer numA, String titre, String message, Set<Annonce_Service> listService) {
 		this.numA = numA;
 		this.titre = titre;
 		this.message = message;
@@ -67,7 +80,7 @@ public class Annonce {
 		this.annonce_service = null;
 	} 
 
-	public Annonce(int numA, String titre, String message, Double noteP, Double noteS, int statut, int numC,
+	public Annonce(Integer numA, String titre, String message, Double noteP, Double noteS, int statut, int numC,
 			Set<Annonce_Service>  annonce_service) {
 		this.numA = numA;
 		this.titre = titre;
@@ -79,11 +92,11 @@ public class Annonce {
 		this.annonce_service = null;
 	}
 
-	public int getNumA() {
+	public Integer getNumA() {
 		return numA;
 	}
 
-	public void setNumA(int numA) {
+	public void setNumA(Integer numA) {
 		this.numA = numA;
 	}
 
@@ -127,11 +140,11 @@ public class Annonce {
 		this.statut = statut;
 	}
 
-	public int getNumC() {
+	public Integer getNumC() {
 		return numC;
 	}
 
-	public void setNumC(int numC) {
+	public void setNumC(Integer numC) {
 		this.numC = numC;
 	}
 
