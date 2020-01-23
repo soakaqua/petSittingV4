@@ -17,6 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import model.Annonce;
 import model.Sitter;
 import repositories.AnnonceRepository;
+import repositories.CompteRepository;
+import repositories.ReponseRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-context.xml"})
@@ -26,13 +28,19 @@ public class TestDaoAnnonce {
 	
 	@Autowired
 	private AnnonceRepository annonceRepository;
+	
+	@Autowired
+	private ReponseRepository reponseRepository;
+
+	@Autowired
+	private CompteRepository compteRepository;
 
 //	@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0")}) 
     
 	
     @Test
     public void testSelectSittersByReponseValidee() {
-    	List<Sitter> list = annonceRepository.selectSittersByReponseValidee(4);
+    	List<Sitter> list = compteRepository.selectSittersByReponseValidee(100);
         System.out.println(list);
     }
 	
