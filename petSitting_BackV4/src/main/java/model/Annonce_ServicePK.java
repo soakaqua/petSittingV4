@@ -25,7 +25,6 @@ public class Annonce_ServicePK implements Serializable{
 
 
 	public Annonce_ServicePK(Annonce annonce, Service service) {
-		super();
 		this.annonce = annonce;
 		this.service = service;
 	}
