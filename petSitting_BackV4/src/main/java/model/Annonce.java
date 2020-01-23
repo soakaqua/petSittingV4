@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -15,6 +16,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.springframework.data.jpa.repository.Query;
+
 
 @Entity
 @Table(name="annonce")
@@ -26,9 +29,9 @@ import javax.persistence.Version;
 @NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0"),
 @NamedQuery(name="Annonce.selectAnnonceBySitter",query="select distinct a from Annonce a left join fetch a.reponse rep where rep.key.sitter.numC=?1"),
 //@NamedQuery(name="Annonce.selectSittersByReponseValidee",query="select distinct s from Sitter s left join fetch s.reponse rep where rep.key.numA=?1"), 
-//@NamedQuery(name="Annonce.selectNoteSitter",query="select distinct noteS from Sitter s left join fetch s.annonce ann where ann.key.numC=?1"),
+@NamedQuery(name="Annonce.selectNoteSitter",query="select distinct noteS from Sitter s left join fetch s.annonce ann where ann.key.numC=?1"),
+//@NamedQuery(name="Reponse.selectReponsesRefusees",query="select distinct r from Reponse r left join fetch r.annonce ann where ann.key.annonce.numA != ?1")
 }) 
-
 
 public class Annonce {
 	

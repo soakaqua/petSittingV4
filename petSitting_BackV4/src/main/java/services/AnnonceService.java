@@ -15,12 +15,16 @@ import model.Annonce_Service;
 import model.Reponse;
 import model.Sitter;
 import repositories.AnnonceRepository;
+import repositories.ReponseRepository;
 
 @Service
 public class AnnonceService {
 	
 	@Autowired
 	private static AnnonceRepository annonceRepository;
+	
+	@Autowired
+	private static ReponseRepository reponseRepository;
 	
 	public Annonce save(Annonce c) {
 		
@@ -89,33 +93,32 @@ public class AnnonceService {
 		annonceRepository.save(a);
 	} 
 
-	public void supprReponsesRefusees(Annonce a) {
-		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
-		int bonNumA=a.getNumA();
-		List<Reponse> reponses = null;
-		Query query = ctx.createQuery("from Reponse r where r.numA!=bonNumA");
-		reponses = query.getResultList();
-		for (int i=0; i<reponses.size(); i++)  
-		{annonceRepository.delete(reponses.get(i)); }
-		ctx.close();
-	}
-
-	public void validerSitter(Annonce a) {
-		a.setStatut(1);
-		annonceRepository.save(a);
-		supprReponsesRefusees(a);
-	}
-
-	public int noterS(Double noteS, Annonce a, Sitter s) {
-		//daoAnnonce.selectSittersByReponseValidee(a);
-		List<Integer>liste=annonceRepository.selectNoteSitter(s);
-		int somme=0;
-		for (int i=0; i<liste.size(); i++)  
-		{ somme+=liste.get(i);}
-		int moyenne=somme/(liste.size());
-		//			s.setNoteS(moyenne);
-		return moyenne;
-	}
+//	public void supprReponsesRefusees(Annonce a) {
+//		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
+//		Integer numA=a.getNumA();
+//		List<Reponse> reponses = annonceRepository.selectReponsesRefusees(numA);
+//
+//		for (int i=0; i<reponses.size(); i++)  
+//			{reponseRepository.deleteById(reponses.getKey(i)); }
+//		ctx.close();
+//	}
+//
+//	public void validerSitter(Annonce a) {
+//		a.setStatut(1);
+//		annonceRepository.save(a);
+//		supprReponsesRefusees(a);
+//	}
+//
+//	public int noterS(Double noteS, Annonce a, Sitter s) {
+//		//daoAnnonce.selectSittersByReponseValidee(a);
+//		List<Integer>liste=annonceRepository.selectNoteSitter(s);
+//		int somme=0;
+//		for (int i=0; i<liste.size(); i++)  
+//		{ somme+=liste.get(i);}
+//		int moyenne=somme/(liste.size());
+//		//			s.setNoteS(moyenne);
+//		return moyenne;
+//	}
 
 
 	

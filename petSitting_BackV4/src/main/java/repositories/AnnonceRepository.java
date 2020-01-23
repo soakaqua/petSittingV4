@@ -3,9 +3,11 @@ package repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import model.Annonce;
-import model.*;
+import model.Reponse;
+import model.Sitter;
 
 public interface AnnonceRepository extends JpaRepository<Annonce, Integer> {
  
@@ -15,12 +17,15 @@ public interface AnnonceRepository extends JpaRepository<Annonce, Integer> {
 	public List<Annonce> afficherAnnoncesTerminees(Integer numC);
 	public List<Annonce> selectAnnonceBySitter(Integer numC);
 	public List<Annonce> selectAllWithStatut0();
+	
 	//public List<Sitter> selectSittersByReponseValidee(Integer numA);
-	//public List<Integer> selectNoteSitter(Integer numC);
+	public List<Integer> selectNoteSitter(Integer numC);
 	
+	public List<Annonce>findAllByNumA(Integer numA);
 	
-
+	//public List<Reponse> selectReponsesRefusees(Integer numA);
 }
+
 
 
 
