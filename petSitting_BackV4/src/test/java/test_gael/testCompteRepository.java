@@ -63,15 +63,15 @@ public class testCompteRepository {
 //		assertEquals("loups", c2.getNom());
 //	}
 	
-//	@Test
-//	public void testSaveFromService2() {
-//		Compte c = null;
-//		c.setNom("lupus");
-//		
-//		c = compteService.save(c);
-//		System.out.println(c.getNom());
-//		assertEquals("lupus", c.getNom());
-//	}
+	@Test
+	public void testSaveFromService2() {
+		Compte c = new Compte();
+		c.setNom("lupus");
+		
+		c = compteService.save(c);
+		System.out.println(c.getNom());
+		assertEquals("lupus", c.getNom());
+	}
 	
 
 }

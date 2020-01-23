@@ -21,7 +21,6 @@ public class Annonce_Service {
 	private int version;
 	
 	public Annonce_Service() {
-		super();
 	}
 
 	public Annonce_Service(Annonce_ServicePK key, int version) {

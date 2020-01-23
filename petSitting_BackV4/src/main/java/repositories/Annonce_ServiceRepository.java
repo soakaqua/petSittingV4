@@ -1,9 +1,11 @@
 package repositories;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import model.Annonce;
+import model.Annonce_Service;
+import model.Annonce_ServicePK;
 
-public interface Annonce_ServiceRepository extends JpaRepository<Annonce, Integer>  {
-
+public interface Annonce_ServiceRepository extends JpaRepository<Annonce_Service, Annonce_ServicePK>  {
+	
 }
