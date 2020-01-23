@@ -40,14 +40,15 @@ public class Service {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	public int getNumSer() {
-		return numSer;
-	}
-	public void setNumSer(int numSer) {
-		this.numSer = numSer;
-	}
+	
 	public String getNomSer() {
 		return nomSer;
+	}
+	public Integer getNumSer() {
+		return numSer;
+	}
+	public void setNumSer(Integer numSer) {
+		this.numSer = numSer;
 	}
 	public void setNomSer(String nomSer) {
 		this.nomSer = nomSer;
