@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Annonce;
+import model.Sitter;
 import repositories.AnnonceRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,6 +29,13 @@ public class TestDaoAnnonce {
 
 //	@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0")}) 
     
+	
+    @Test
+    public void testSelectSittersByReponseValidee() {
+    	List<Sitter> list = annonceRepository.selectSittersByReponseValidee(4);
+        System.out.println(list);
+    }
+	
     //@Test
     public void testSelectAnnonceByProprio() {
     	List<Annonce> list = annonceRepository.selectAnnonceByProprio(4);
