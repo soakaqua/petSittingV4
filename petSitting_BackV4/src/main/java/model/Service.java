@@ -24,16 +24,17 @@ public class Service {
 	@Version
 	private int version;
 	
-	
-	
-	
 	public Service() {
 	}
-	public Service(int numSer, String nomSer, double prix) {
+
+	public Service(Integer numSer, String nomSer, double prix, int version) {
 		this.numSer = numSer;
 		this.nomSer = nomSer;
 		this.prix = prix;
+		this.version = version;
 	}
+
+	
 	public int getVersion() {
 		return version;
 	}
@@ -59,13 +60,16 @@ public class Service {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + numSer;
+		result = prime * result + ((numSer == null) ? 0 : numSer.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -75,10 +79,19 @@ public class Service {
 		if (getClass() != obj.getClass())
 			return false;
 		Service other = (Service) obj;
-		if (numSer != other.numSer)
+		if (numSer == null) {
+			if (other.numSer != null)
+				return false;
+		} else if (!numSer.equals(other.numSer))
 			return false;
 		return true;
 	}
+
+
+
+
+
+	
 	
 	
 	
