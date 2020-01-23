@@ -1,5 +1,6 @@
 package services;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -24,29 +25,30 @@ public class AnnonceService2 {
 	@Autowired
 	private AnnonceRepository annonceRepository;
 	
-//	public Annonce save(Annonce c) {
-//		
-//		//int numA, String titre, String message, Double noteP, Double noteS, int statut, int numC, Set<Annonce_Service>  annonce_service
-//		
-//		Annonce annonceEnBase = null;
-//		if(c.getNumA()!=0) {
-//			Optional<Annonce> opt = annonceRepository.findById(c.getNumC());
-//			annonceEnBase = opt.get();
-//			annonceEnBase.setTitre((c.getTitre()!=null)?c.getTitre():annonceEnBase.getTitre());
-//			annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
-//			annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
-//			annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
-//			annonceEnBase.setNumC((c.getNumC()!=0)?c.getNumC():annonceEnBase.getNumC());
-////			annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
-//			annonceRepository.save(annonceEnBase);
-//			return annonceEnBase;
-//		}
-//		else {
-//			annonceRepository.save(c);
-//			return c;
-//		}
-//		
-//	}
+	
+	public Annonce save(Annonce c) {
+		
+		//int numA, String titre, String message, Double noteP, Double noteS, int statut, int numC, Set<Annonce_Service>  annonce_service
+		
+		Annonce annonceEnBase = null;
+		if(c.getNumA()!=null) {
+			Optional<Annonce> opt = annonceRepository.findById(c.getNumA());
+			annonceEnBase = opt.get();
+			annonceEnBase.setTitre((c.getTitre()!=null)?c.getTitre():annonceEnBase.getTitre());
+			annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
+			annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
+			annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
+			annonceEnBase.setNumC((c.getNumC()!=null)?c.getNumC():annonceEnBase.getNumC());
+//			annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
+			annonceRepository.save(annonceEnBase);
+			return annonceEnBase;
+		}
+		else {
+			annonceRepository.save(c);
+			return c;
+		}
+		
+	}
 		//-----------------------------METHODES--------------------------------------
 		
 //		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
@@ -121,18 +123,28 @@ public class AnnonceService2 {
 	private Annonce_ServiceRepository annonceServiceRepository;
 	
 	
-	public static void publierServiceAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec services
+	public void publierServiceAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec services
 		a.setListService(annonce_service);
-		//insertion des services dans la table annonce_service
 		
-	}
+		//save a 
+//		a= save(a);
+		
+		//insertion des services dans la table annonce_service
+	      Iterator<Annonce_Service> it = annonce_service.iterator();
+	      Annonce_Service aS = new Annonce_Service();
+	      while(it.hasNext()){
+	    	  aS = it.next();
+	    	  annonceServiceRepository.save(aS);
+//	    	  annonceServiceRepository.save(it.next());
+	      }	
+		}
+		
 	
 public Annonce_Service save(Annonce a, model.Service s) {
 		
 		Annonce_ServicePK aSPK = new Annonce_ServicePK(a, s);
 		Annonce_Service aS = new Annonce_Service();
 		aS.setKey(aSPK);
-//		annonceServiceRepository.save(aS);
 		System.out.println(aS);
 		System.out.println(aS.getVersion());
 		System.out.println(aS.getKey());
