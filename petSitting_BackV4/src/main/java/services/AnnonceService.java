@@ -4,17 +4,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import model.Annonce;
 import model.Annonce_Service;
-import model.Reponse;
-import model.Sitter;
 import repositories.AnnonceRepository;
+import repositories.ReponseRepository;
 
 @Service
 public class AnnonceService {
@@ -22,19 +18,22 @@ public class AnnonceService {
 	@Autowired
 	private static AnnonceRepository annonceRepository;
 	
+//	@Autowired
+//	private ReponseRepository reponseRepository;
+	
 	public Annonce save(Annonce c) {
 		
 		//int numA, String titre, String message, Double noteP, Double noteS, int statut, int numC, Set<Annonce_Service>  annonce_service
 		
 		Annonce annonceEnBase = null;
-		if(c.getNumA()!=0) {
-			Optional<Annonce> opt = annonceRepository.findById(c.getNumC());
+		if(c.getNumA()!=null) {
+			Optional<Annonce> opt = annonceRepository.findById(c.getNumA());
 			annonceEnBase = opt.get();
 			annonceEnBase.setTitre((c.getTitre()!=null)?c.getTitre():annonceEnBase.getTitre());
 			annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
 			annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
 			annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
-			annonceEnBase.setNumC((c.getNumC()!=0)?c.getNumC():annonceEnBase.getNumC());
+			annonceEnBase.setNumC((c.getNumC()!=null)?c.getNumC():annonceEnBase.getNumC());
 //			annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
 			annonceRepository.save(annonceEnBase);
 			return annonceEnBase;
@@ -89,33 +88,32 @@ public class AnnonceService {
 		annonceRepository.save(a);
 	} 
 
-	public void supprReponsesRefusees(Annonce a) {
-		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
-		int bonNumA=a.getNumA();
-		List<Reponse> reponses = null;
-		Query query = ctx.createQuery("from Reponse r where r.numA!=bonNumA");
-		reponses = query.getResultList();
-		for (int i=0; i<reponses.size(); i++)  
-		{annonceRepository.delete(reponses.get(i)); }
-		ctx.close();
-	}
-
-	public void validerSitter(Annonce a) {
-		a.setStatut(1);
-		annonceRepository.save(a);
-		supprReponsesRefusees(a);
-	}
-
-	public int noterS(Double noteS, Annonce a, Sitter s) {
-		//daoAnnonce.selectSittersByReponseValidee(a);
-		List<Integer>liste=annonceRepository.selectNoteSitter(s);
-		int somme=0;
-		for (int i=0; i<liste.size(); i++)  
-		{ somme+=liste.get(i);}
-		int moyenne=somme/(liste.size());
-		//			s.setNoteS(moyenne);
-		return moyenne;
-	}
+//	public void supprReponsesRefusees(Annonce a) {
+//		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
+//		Integer numA=a.getNumA();
+//		List<Reponse> reponses = annonceRepository.selectReponsesRefusees(numA);
+//
+//		for (int i=0; i<reponses.size(); i++)  
+//			{reponseRepository.deleteById(reponses.getKey(i)); }
+//		ctx.close();
+//	}
+//
+//	public void validerSitter(Annonce a) {
+//		a.setStatut(1);
+//		annonceRepository.save(a);
+//		supprReponsesRefusees(a);
+//	}
+//
+//	public int noterS(Double noteS, Annonce a, Sitter s) {
+//		//daoAnnonce.selectSittersByReponseValidee(a);
+//		List<Integer>liste=annonceRepository.selectNoteSitter(s);
+//		int somme=0;
+//		for (int i=0; i<liste.size(); i++)  
+//		{ somme+=liste.get(i);}
+//		int moyenne=somme/(liste.size());
+//		//			s.setNoteS(moyenne);
+//		return moyenne;
+//	}
 
 
 	

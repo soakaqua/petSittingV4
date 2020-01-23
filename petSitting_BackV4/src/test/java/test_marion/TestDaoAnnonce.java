@@ -5,20 +5,20 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.NamedQuery;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Annonce;
+import model.Sitter;
 import repositories.AnnonceRepository;
+import repositories.CompteRepository;
+import repositories.ReponseRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-context.xml"})
@@ -28,9 +28,22 @@ public class TestDaoAnnonce {
 	
 	@Autowired
 	private AnnonceRepository annonceRepository;
+	
+	@Autowired
+	private ReponseRepository reponseRepository;
+
+	@Autowired
+	private CompteRepository compteRepository;
 
 //	@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0")}) 
     
+	
+    @Test
+    public void testSelectSittersByReponseValidee() {
+    	List<Sitter> list = compteRepository.selectSittersByReponseValidee(100);
+        System.out.println(list);
+    }
+	
     //@Test
     public void testSelectAnnonceByProprio() {
     	List<Annonce> list = annonceRepository.selectAnnonceByProprio(4);
