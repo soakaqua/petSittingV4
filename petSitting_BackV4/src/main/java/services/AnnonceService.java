@@ -55,9 +55,20 @@ public class AnnonceService {
 		return list;
 	}
 		
-	public static void publierAnnonce(String titre, String message, int numC, Set<Annonce_Service> annonce_service) { //probleme avec services
-		Annonce a=new Annonce(titre, message, numC,	annonce_service);
+	public static void publierContenuAnnonce(String titre, String message, int numC) { //probleme avec services
+		Annonce a=new Annonce();
+		a.setTitre(titre);
+		a.setMessage(message);
+		a.setNumC(numC);
 		annonceRepository.save(a);
+	}
+	
+	public static void publierServiceAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec services
+		a.setListService(annonce_service);
+		//insert numero annonce_service 
+		
+		//insertion des services dans la table annonce_service
+		
 	}
 
 	public static void modifierContenuAnnonce(int numA, String titre, String message) { 
@@ -73,15 +84,7 @@ public class AnnonceService {
 		annonceRepository.save(a);
 	} 
 
-	public static void modifierServicesAnnonce(int numA, Set<Annonce_Service> annonce_service) { //probleme avec les services
-		Annonce a=new Annonce();
-		a.setNumA(a.getNumA());
-		a.setTitre(a.getTitre());
-		a.setMessage(a.getMessage());
-		a.setNoteP(a.getNoteP());
-		a.setNoteS(a.getNoteS());
-		a.setStatut(a.getStatut());
-		a.setNumC(a.getNumC());
+	public static void modifierServicesAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec les services
 		a.setListService(annonce_service);
 		annonceRepository.save(a);
 	} 
@@ -93,7 +96,7 @@ public class AnnonceService {
 		Query query = ctx.createQuery("from Reponse r where r.numA!=bonNumA");
 		reponses = query.getResultList();
 		for (int i=0; i<reponses.size(); i++)  
-		{  annonceRepository.delete(reponses.get(i)); }
+		{annonceRepository.delete(reponses.get(i)); }
 		ctx.close();
 	}
 
