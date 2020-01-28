@@ -3,11 +3,18 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
 @Table(name = "reponse")
+
+@NamedQueries({
+	@NamedQuery(name="Reponse.selectReponsesRefusees",query="select r from Reponse r left join fetch r.key.annonce ann left join fetch r.key.sitter sit where ann.numA=?1 and sit.numC!=?2")
+})
+
 public class Reponse {
 	
 	@EmbeddedId

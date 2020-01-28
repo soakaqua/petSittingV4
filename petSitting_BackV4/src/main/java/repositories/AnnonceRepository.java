@@ -23,7 +23,7 @@ public interface AnnonceRepository extends JpaRepository<Annonce, Integer> {
 	
 	public List<Annonce>findAllByNumA(Integer numA);
 	
-	//public List<Reponse> selectReponsesRefusees(Integer numA);
+
 }
 
 

@@ -16,7 +16,7 @@ import repositories.ReponseRepository;
 public class AnnonceService {
 	
 	@Autowired
-	private static AnnonceRepository annonceRepository;
+	private AnnonceRepository annonceRepository;
 	
 //	@Autowired
 //	private ReponseRepository reponseRepository;

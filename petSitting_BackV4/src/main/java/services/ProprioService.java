@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import model.Annonce;
 import model.Annonce_Service;
+import model.Reponse;
 import repositories.AnnonceRepository;
 import repositories.ReponseRepository;
 
@@ -16,11 +17,13 @@ import repositories.ReponseRepository;
 public class ProprioService {
 	
 	@Autowired
-	private static AnnonceRepository annonceRepository;
+	private AnnonceRepository annonceRepository;
 	
-//	@Autowired
-//	private ReponseRepository reponseRepository;
+	@Autowired
+	private ReponseRepository reponseRepository;
 	
+	@Autowired
+	private ProprioService proprioService;
 
 		//-----------------------------METHODES--------------------------------------
 			
@@ -30,7 +33,7 @@ public class ProprioService {
 		return list;
 	}
 		
-	public static void publierContenuAnnonce(String titre, String message, int numC) { //probleme avec services
+	public void publierContenuAnnonce(String titre, String message, int numC) { //probleme avec services
 		Annonce a=new Annonce();
 		a.setTitre(titre);
 		a.setMessage(message);
@@ -38,7 +41,7 @@ public class ProprioService {
 		annonceRepository.save(a);
 	}
 	
-	public static void publierServiceAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec services
+	public void publierServiceAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec services
 		a.setListService(annonce_service);
 		//insert numero annonce_service 
 		
@@ -46,7 +49,7 @@ public class ProprioService {
 		
 	}
 
-	public static void modifierContenuAnnonce(int numA, String titre, String message) { 
+	public void modifierContenuAnnonce(int numA, String titre, String message) { 
 		Annonce a=new Annonce();
 		a.setNumA(a.getNumA());
 		a.setTitre(titre);
@@ -59,26 +62,26 @@ public class ProprioService {
 		annonceRepository.save(a);
 	} 
 
-	public static void modifierServicesAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec les services
+	public void modifierServicesAnnonce(Annonce a, Set<Annonce_Service> annonce_service) { //probleme avec les services
 		a.setListService(annonce_service);
 		annonceRepository.save(a);
 	} 
 
-//	public void supprReponsesRefusees(Annonce a) {
-//		ClassPathXmlApplicationContext ctx=new ClassPathXmlApplicationContext("application-context.xml");
-//		Integer numA=a.getNumA();
-//		List<Reponse> reponses = annonceRepository.selectReponsesRefusees(numA);
-//
-//		for (int i=0; i<reponses.size(); i++)  
-//			{reponseRepository.deleteById(reponses.getKey(i)); }
-//		ctx.close();
-//	}
-//
-//	public void validerSitter(Annonce a) {
-//		a.setStatut(1);
-//		annonceRepository.save(a);
-//		supprReponsesRefusees(a);
-//	}
+	public void supprReponsesRefusees(Integer numA, Integer numC) {
+		System.out.println(reponseRepository);
+		List<Reponse> reponses = reponseRepository.selectReponsesRefusees(numA, numC);
+		for (int i=0; i<reponses.size(); i++)  
+			{reponseRepository.deleteById(reponses.get(i).getKey()); }
+	}
+
+	public void validerSitter(Integer numA, Integer numC) {
+
+		Optional <Annonce> a=findById(numA);
+		a.setStatut(1);
+		annonceRepository.save(a);
+
+		proprioService.supprReponsesRefusees(numA, numC);
+	}
 //
 //	public int noterS(Double noteS, Annonce a, Sitter s) {
 //		//daoAnnonce.selectSittersByReponseValidee(a);
