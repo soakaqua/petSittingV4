@@ -1,6 +1,5 @@
 package model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -9,19 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import org.springframework.data.jpa.repository.Query;
-
 
 @Entity
 @Table(name="annonce")
 @SequenceGenerator(name="seqAnnonce",sequenceName="seq_annonce",initialValue=100,allocationSize=1) 
+
 
 @NamedQueries
 ({@NamedQuery(name="Annonce.selectAnnonceByProprio",query="select distinct p from Annonce p where p.numC=?1"),
@@ -81,7 +77,7 @@ public class Annonce {
 		this.annonce_service = null;
 	} 
 
-	public Annonce(Integer numA, String titre, String message, Double noteP, Double noteS, int statut, int numC,
+	public Annonce(Integer numA, String titre, String message, Double noteP, Double noteS, int statut, Integer numC,
 			Set<Annonce_Service>  annonce_service) {
 		this.numA = numA;
 		this.titre = titre;
@@ -93,7 +89,7 @@ public class Annonce {
 		this.annonce_service = null;
 	}
 
-	public Integer getNumA() {
+	public int getNumA() {
 		return numA;
 	}
 
@@ -141,7 +137,7 @@ public class Annonce {
 		this.statut = statut;
 	}
 
-	public Integer getNumC() {
+	public int getNumC() {
 		return numC;
 	}
 
