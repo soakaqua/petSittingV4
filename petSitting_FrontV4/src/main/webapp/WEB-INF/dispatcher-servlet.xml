@@ -28,6 +28,8 @@
 		mapping="/bootstrap/css/**"></mvc:resources>
 	<mvc:resources location="/bootstrap/js/"
 		mapping="/bootstrap/js/**"></mvc:resources>
+	<mvc:resources location="/style/" mapping="/style/**"></mvc:resources>
+	<mvc:resources location="/image/" mapping="/image/**"></mvc:resources>
 
 	<!-- ou chercher les controllers -->
 	<context:component-scan
