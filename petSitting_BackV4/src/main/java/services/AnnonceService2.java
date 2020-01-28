@@ -38,7 +38,7 @@ public class AnnonceService2 {
 			annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
 			annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
 			annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
-			annonceEnBase.setNumC((c.getNumC()!=null)?c.getNumC():annonceEnBase.getNumC());
+			annonceEnBase.setNumC((c.getNumA()!=null)?c.getNumC():annonceEnBase.getNumC());
 //			annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
 			annonceRepository.save(annonceEnBase);
 			return annonceEnBase;

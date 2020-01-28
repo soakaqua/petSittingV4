@@ -14,6 +14,7 @@ public class ServiceService {
 	
 	public model.Service save(model.Service s) {
 
+
 		model.Service serviceEnBase = null;
 		if (s.getNumSer() != null) {
 			Optional<model.Service> opt = serviceRepository.findById(s.getNumSer());
@@ -27,7 +28,9 @@ public class ServiceService {
 		else {
 			serviceRepository.save(s);
 			return s;
+
 		}
+
 	}
 }
  	

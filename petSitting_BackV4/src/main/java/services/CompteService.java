@@ -1,5 +1,7 @@
 package services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +35,15 @@ public class CompteService {
 			return c;
 
 		}
-		
-		
-		
-		
 
+	}
+	
+	public Compte connection(String mail, String mdp) {
+		List<Compte> lstc = new ArrayList<Compte>();
+		lstc= compteRepository.checkID(mail, mdp);
+		Compte c = lstc.get(0);
+
+		return c;
 		
 	}
 	

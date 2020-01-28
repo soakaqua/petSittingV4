@@ -63,14 +63,25 @@ public class testCompteRepository {
 //		assertEquals("loups", c2.getNom());
 //	}
 	
+//	@Test
+//	public void testSaveFromService2() {
+//		Compte c = new Compte();
+//		c.setNom("lupus");
+//		
+//		c = compteService.save(c);
+//		System.out.println(c.getNom());
+//		assertEquals("lupus", c.getNom());
+//	}
+//	
 	@Test
-	public void testSaveFromService2() {
-		Compte c = new Compte();
-		c.setNom("lupus");
+	public void testCheckConnection() {
+		String mdp = "totopwd";
+		String mail = "loups.reed@gmail.com";
 		
-		c = compteService.save(c);
-		System.out.println(c.getNom());
-		assertEquals("lupus", c.getNom());
+		Compte c = compteService.connection(mail, mdp);
+
+		assertEquals(100, c.getNumC(), 0);
+		
 	}
 	
 
