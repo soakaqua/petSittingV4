@@ -7,12 +7,20 @@
 	<packaging>war</packaging> <!--> Comment maven créé le projer (jar, war ou pom) < -->
 	<version>1.0-SNAPSHOT</version> <!--> Version actuelle < -->
 
-
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<spring-version>5.2.2.RELEASE</spring-version>
+		
+	</properties>
+	
 	<dependencies>  <!--> Gère les librairies à dl automatiquement < -->
 		<dependency> <!--> chercher dans mvnripository les librairies voulues < -->
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
+			<scope>provided</scope>
+			
 		</dependency>
 
 		<dependency>
@@ -27,11 +35,29 @@
 			<version>1.2</version>
 		</dependency>
 
-	</dependencies>
+	
 
-	<properties>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<maven.compiler.source>1.8</maven.compiler.source>
-	</properties>
+<!-- poour le web spring mvc -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.2.2.RELEASE</version>
+		</dependency>
+		<!-- Pour faire du web avec java -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Pour tests unitaires -->
+		<dependency> <!--> chercher dans mvnripository les librairies voulues < -->
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+</dependencies>
+
+
 
 </project>
