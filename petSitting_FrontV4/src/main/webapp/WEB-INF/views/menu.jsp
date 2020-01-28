@@ -70,9 +70,9 @@
 					<div id="banderole" class="col-2">
 						<br />
 						<h4 style="font-size: 23; color: white">Menu</h4>
-						<br /> <a href="proprio?id=1"> Consulter mes annonces</a> <br />
-						<br /> <a href="proprio?id=2">Modifier une annonce</a> <br /> <br />
-						<a href="proprio?id=3">Publier une annonce</a> <br /> <br /> <a
+						<br /> <a href="/proprio/consulterAnnonces"> Consulter mes annonces</a> <br />
+						<br /> <a href="/proprio/modifierAnnonce">Modifier une annonce</a> <br /> <br />
+						<a href="/proprio/publierAnnonce">Publier une annonce</a> <br /> <br /> <a
 							href="proprio?id=4">Valider un sitter</a> <br /> <br /> <a
 							href="proprio?id=5">Noter un sitter</a> <br /> <br /> <a
 							href="accueil">Me déconnecter</a> <br />
