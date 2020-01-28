@@ -77,9 +77,9 @@ public class testAnnonce_ServiceRepository {
 		Annonce_Service aS1 = new Annonce_Service();
 		aS1.setKey(aSPK1);
 		Annonce_Service aS2 = new Annonce_Service();
-		aS1.setKey(aSPK2);
+		aS2.setKey(aSPK2);
 		Annonce_Service aS3 = new Annonce_Service();
-		aS1.setKey(aSPK3);
+		aS3.setKey(aSPK3);
 		
 		annonce_services.add(aS1);
 		annonce_services.add(aS2);
