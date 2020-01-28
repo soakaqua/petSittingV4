@@ -13,17 +13,6 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/CSSpetsitting.css">
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-	crossorigin="anonymous"></script>
 
 <!-- <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath}/logo.jpg" /> -->
@@ -32,6 +21,17 @@
 	alt="${pageContext.request.contextPath}/logo.jpg"
 	src="${pageContext.request.contextPath}/logo.jpg"/>
 </a>  -->
+
+
+<!-- bootstrap -->
+<c:set var="ctx" value="${pageContext.servletContext.contextPath}"></c:set>
+<link rel="stylesheet" href="${ctx}/bootstrap/css/bootstrap.min.css">
+<!-- lien bootstrap js local -->
+<script rel="stylesheet" src="${ctx}/bootstrap/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/CSSpetsitting.css">
+
 
 
 <meta charset="UTF-8">
@@ -65,7 +65,7 @@
 
 
 
-
+		<c:choose>
 		<c:if test="${sessionScope.Type=='admin'}">
 			<p>Admin</p>
 		</c:if>
@@ -165,6 +165,7 @@
 
 				</div>
 		</c:if>
+		</c:choose>
 </body>
 </html>
 
