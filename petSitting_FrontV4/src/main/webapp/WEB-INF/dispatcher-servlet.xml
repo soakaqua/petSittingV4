@@ -13,28 +13,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!-- Internationnalisation -->
-	<!-- gérer fichier properties qu'on va utiliser -->
-	<bean id="messageSource"
-		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<!-- nom de base du fichier message -->
-		<property name="basename" value="classpath:messages"></property>
-		<property name="defaultEncoding" value="UTF-8"></property>
-	</bean>
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean id="localeChangeInterceptor"
-				class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-				<property name="paramName" value="lang"></property>
-			</bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
-	<bean id="localeResolver"
-		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
-		<property name="cookieName" value="lang"></property>
-		<property name="defaultLocale" value="fr"></property>
-	</bean>
+
 
 	<!-- utilisation locale du validator -->
 	<mvc:annotation-driven validator="validator"></mvc:annotation-driven>
