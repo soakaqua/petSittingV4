@@ -46,12 +46,14 @@
 	<br/>
 	<h4 style="font-size:23;color:white">Menu</h4>
 	<br/>
-	<a href="Proprio consulterAnnonces.html"> Consulter mes annonces</a> <br/><br/>
-	<a href="Proprio modifierAnnonce.html">Modifier une annoncee</a> <br/><br/>
-	<a href="Proprio publierAnnonce.html">Publier une annonce</a> <br/><br/>
-	<a href="Proprio validerSitter.html">Valider un sitter</a> <br/><br/>
-	<a href="Proprio noterS.html">Noter un sitter</a> <br/><br/>	
-	<a href="Main page.html">Accueil</a> <br/><br/>
+	<a href="proprio/consulterAnnonces">Consulter mes annonces</a> <br/><br/>
+	<!--
+	<a href="proprio/modifierAnnonce">Modifier une annoncee</a> <br/><br/>
+	-->
+	<a href="proprio/publierAnnonce">Publier une annonce</a> <br/><br/>
+	<a href="proprio/validerSitter">Valider un sitter</a> <br/><br/>
+	<a href="proprio/noterS">Noter un sitter</a> <br/><br/>	
+	<a href="accueil">Accueil</a> <br/><br/>
 	<a href="#deco">Me deconnecter </a> <br/><br/>
 </div> 
 	
@@ -63,17 +65,31 @@
 
 	Voici les annonces que vous avez publiées : <br/><br/>
 	
-
-<table border>
-
-<c:forEach items="${ listeAnnonce }" var="ann">
-	<tr>
-		<td> ${ann.titre} </td>
-		<td> ${ann.msg} </td>
-	</tr>
-</c:forEach>
+<table class="table" border="1">
+			<tr>
+				<th>Titre</th>
+				<th>Message</th>
+				<th>Services</th>
+				<th>Statut</th>
+				<th></th>
+			</tr>
+			
+			<c:forEach items ="${ listeAnnonce }" var="a">
+				<tr>
+					<!-- COLONNES -->
+					<td>${a.titre}</td>
+					<td>${a.msg}</td>
+					<td>${p.service}</td>
+					<td>${p.statut}</td>	
+					
+					<!-- BOUTONS -->				
+					<td><a href="${ctx}/proprio/save?id=${a.id}" class="btn btn-primary">Modifier</a></td>
+					<td><a href="${ctx}/proprio/delete?id=${a.id}" class="btn btn-danger">Supprimer</a></td>									
+				</tr>
+				
+			</c:forEach>
+		</table>
 	
-</table>
 	
 </div>
 
