@@ -42,23 +42,23 @@ public class SitterService {
 		return annonces;
 
 	}
-
-	public void noterP(Double noteP, Annonce a) {
-		Annonce annonce = null;
-		int numC = a.getNumC();
-		annonce.setNoteP(noteP);
-		annonceRepository.save(annonce);
-
-	}
-
-  public Double getNoteMoyenne(Proprio p) {
-  int numC=p.getNumC();
-  Double moyenne=null;
-  //moyenne.get();
-  return moyenne;
-
-
-}
+//
+//	public void noterP(Double noteP, Annonce a) {
+//		Annonce annonce = null;
+//		int numC = a.getNumC();
+//		annonce.setNoteP(noteP);
+//		annonceRepository.save(annonce);
+//
+//	}
+//
+//  public Double getNoteMoyenne(Proprio p) {
+//  int numC=p.getNumC();
+//  Double moyenne=null;
+//  //moyenne.get();
+//  return moyenne;
+//
+//
+//}
 	
 }	
 	
