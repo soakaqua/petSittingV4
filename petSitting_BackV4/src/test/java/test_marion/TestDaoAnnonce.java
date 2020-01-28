@@ -5,13 +5,12 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import model.Annonce;
 import model.Reponse;
@@ -32,10 +31,10 @@ public class TestDaoAnnonce {
 	
 	@Autowired
 	private ReponseRepository reponseRepository;
-
+	
 	@Autowired
 	private CompteRepository compteRepository;
-	
+
 	@Autowired
 	private ProprioService proprioService;
 
@@ -53,11 +52,11 @@ public class TestDaoAnnonce {
 	//@Test
 	public void testSupprReponsesRefusees() {
 		proprioService.supprReponsesRefusees(100,1);
-	}	 
+	}
 	
-	//@Test
+	@Test
 	public void testValiderSitter() {
-		proprioService.validerSitter(100,1);
+		proprioService.validerSitter(100,100);
 	}
 	
     //@Test
@@ -74,12 +73,12 @@ public class TestDaoAnnonce {
 	
 
     
-    //@Test
-    public void testAfficherAnnoncesTerminees() {
-    	List<Annonce> list = annonceRepository.afficherAnnoncesTerminees(11);
-        System.out.println(list);
-    }
-    
+//    //@Test
+//    public void testAfficherAnnoncesTerminees() {
+//    	List<Annonce> list = annonceRepository.afficherAnnoncesTerminees(11);
+//        System.out.println(list);
+//    }
+   
     //@Test
     public void testSelectAnnonceBySitter() {
     	List<Annonce> list = annonceRepository.selectAnnonceBySitter(101);
@@ -93,8 +92,8 @@ public class TestDaoAnnonce {
     }
 	
     //@Test
-    @Transactional
-    @Commit
+    //@Transactional
+    //@Commit
     //@Rollback(true)
     public void insertAnnonce() {
         Annonce s=new Annonce();
@@ -108,8 +107,8 @@ public class TestDaoAnnonce {
   
     
     //@Test
-    @Transactional
-    @Commit
+    //@Transactional
+    //@Commit
     //@Rollback(true)
     public void updateAnnonce() {
     	Optional<Annonce> s = annonceRepository.findById(125);

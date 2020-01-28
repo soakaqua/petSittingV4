@@ -23,7 +23,6 @@ public class AnnonceService {
 	
 	public Annonce save(Annonce c) {
 		
-		//int numA, String titre, String message, Double noteP, Double noteS, int statut, int numC, Set<Annonce_Service>  annonce_service
 		
 		Annonce annonceEnBase = null;
 		if(c.getNumA()!=null) {
@@ -33,7 +32,8 @@ public class AnnonceService {
 			annonceEnBase.setMessage((c.getMessage()!=null)?c.getMessage():annonceEnBase.getMessage());
 			annonceEnBase.setNoteP((c.getNoteP()!=null)?c.getNoteP():annonceEnBase.getNoteP());
 			annonceEnBase.setNoteS((c.getNoteS()!=null)?c.getNoteS():annonceEnBase.getNoteS());
-			annonceEnBase.setNumC((c.getNumA()!=null)?c.getNumC():annonceEnBase.getNumC());
+			annonceEnBase.setNumC((c.getNumC()!=null)?c.getNumC():annonceEnBase.getNumC());
+			annonceEnBase.setStatut((c.getStatut()!=null)?c.getStatut():annonceEnBase.getStatut());
 //			annonceEnBase.setAnnonce_service((c.getNumC()!=null)?c.getAnnonce_service():annonceEnBase.getAnnonce_service());
 			annonceRepository.save(annonceEnBase);
 			return annonceEnBase;
