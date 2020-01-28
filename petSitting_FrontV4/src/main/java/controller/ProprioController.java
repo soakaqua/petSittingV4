@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.Annonce;
-import repositories.AnnonceRepository;
-import repositories.CompteRepository;
+import model.*;
+import repositories.*;
 
 @Controller
 @RequestMapping("/proprio")
@@ -23,7 +22,7 @@ public class ProprioController {
 	@Autowired
 	AnnonceRepository annonceRepository;
 	
-	
+
 	@GetMapping("/delete")
 	public ModelAndView delete(@RequestParam(name="numA") Integer numA) {
 		annonceRepository.deleteById(numA);
