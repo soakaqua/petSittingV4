@@ -65,26 +65,16 @@
 	
 	<br/><br/>
 
-<em><p><label for="titre">Titre</label></p></em>
-	<input size=63 placeholder="ex: Cherche pet-sitter pour chat" required id="titre" name="titre" type="text"/>   
-	<br/><br/>
-	
-<em><p><label for="message" >Message</label></p></em>
-<textarea rows="5" cols="60" placeholder="ex: Date, lieu" required id="message" name="message"></textarea> <br/><br/>
-
+<!-- 
 <em><p><label for="services">Selectionnez le(s) service(s)</label></p></em>
-<input type="checkbox" id="gp" name="gp"/> <label for="gp">Garde chez propriétaire</label> <br/> <!-- on peut cliquer sur tout ce qui est dans le label pour cocher -->
+<input type="checkbox" id="gp" name="gp"/> <label for="gp">Garde chez propriétaire</label> <br/>
 <input type="checkbox" id="gs" name="gs"/> <label for="gs">Garde chez le sitter</label> <br/>
 <input type="checkbox" id="med" name="med"/> <label for="med">Soins médicaux</label> <br/>
 <input type="checkbox" id="bal" name="bal"/> <label for="bal">Ballade</label> <br/>
 <input type="checkbox" id="mas" name="mas"/> <label for="mas">Massage</label> <br/>
 <input type="checkbox" id="to" name="to"/> <label for="to">Toilettage</label> <br/>
 <input type="checkbox" id="ali" name="ali"/> <label for="ali">Alimentaire</label>
-
-<br/><br/>
-<input value="Valider" type="submit" onClick="publierAnnonce()"/>
-<br/><br/><br/><br/>
-
+ -->
 	
 </div>
 
