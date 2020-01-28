@@ -21,7 +21,7 @@ public class Annonce {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqAnnonce") 
-	private int numA ;
+	private Integer numA ;
 	@Column(length=500,nullable=false)
 	private String titre;
 	@Column(length=1000,nullable=false, name="message")
@@ -79,11 +79,11 @@ public class Annonce {
 		this.annonce_service = null;
 	}
 
-	public int getNumA() {
+	public Integer getNumA() {
 		return numA;
 	}
 
-	public void setNumA(int numA) {
+	public void setNumA(Integer numA) {
 		this.numA = numA;
 	}
 
