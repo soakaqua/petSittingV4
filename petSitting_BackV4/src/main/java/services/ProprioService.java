@@ -75,11 +75,15 @@ public class ProprioService {
 	}
 
 	public void validerSitter(Integer numA, Integer numC) {
-		Optional<Annonce> a=annonceRepository.findById(numA);
-		
-		a.setStatut(1);
-		annonceRepository.save(a);
-		proprioService.supprReponsesRefusees(numA, numC);
+		Optional<Annonce> opt=annonceRepository.findById(numA);
+		Annonce annonceEnBase=new Annonce();
+		if(opt.isPresent()) {
+			annonceEnBase = opt.get();			
+			annonceEnBase.setStatut(1);
+			annonceRepository.save(annonceEnBase);
+			proprioService.supprReponsesRefusees(numA, numC);
+		}
+		else {System.out.println("Erreur, annonce non presente en base");}
 	}
 //
 //	public int noterS(Double noteS, Annonce a, Sitter s) {

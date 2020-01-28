@@ -1,17 +1,10 @@
 package test_gael;
 
-import static org.junit.Assert.*;
-
-import java.util.List;
-import java.util.Optional;
-
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import model.Compte;
 import repositories.CompteRepository;
 import services.CompteService;
 
@@ -73,16 +66,16 @@ public class testCompteRepository {
 //		assertEquals("lupus", c.getNom());
 //	}
 //	
-	@Test
-	public void testCheckConnection() {
-		String mdp = "totopwd";
-		String mail = "loups.reed@gmail.com";
-		
-		Compte c = compteService.connection(mail, mdp);
-
-		assertEquals(100, c.getNumC(), 0);
-		
-	}
+//	@Test
+//	public void testCheckConnection() {
+//		String mdp = "totopwd";
+//		String mail = "loups.reed@gmail.com";
+//		
+//		Compte c = compteService.connection(mail, mdp);
+//
+//		assertEquals(100, c.getNumC(), 0);
+//		
+//	}
 	
 
 }

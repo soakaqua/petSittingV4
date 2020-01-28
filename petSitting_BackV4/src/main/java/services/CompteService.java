@@ -38,14 +38,14 @@ public class CompteService {
 
 	}
 	
-	public Compte connection(String mail, String mdp) {
-		List<Compte> lstc = new ArrayList<Compte>();
-		lstc= compteRepository.checkID(mail, mdp);
-		Compte c = lstc.get(0);
-
-		return c;
-		
-	}
+//	public Compte connection(String mail, String mdp) {
+//		List<Compte> lstc = new ArrayList<Compte>();
+//		lstc= compteRepository.checkID(mail, mdp);
+//		Compte c = lstc.get(0);
+//
+//		return c;
+//		
+//	}
 	
 	
 }

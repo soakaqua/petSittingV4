@@ -16,8 +16,8 @@ public interface CompteRepository extends JpaRepository<Compte, Integer>{
 	
 	public List<Sitter> selectSittersByReponseValidee(Integer numA);
 	
-	@Query("select c from Compte c where c.mail=?1 and c.mdp=?2")
-	List<Compte> checkID(String mail, String mdp);
+//	@Query("select c from Compte c where c.mail=?1 and c.mdp=?2")
+//	List<Compte> checkID(String mail, String mdp);
 	
 	
 }
