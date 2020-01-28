@@ -105,6 +105,18 @@
 				<button type="submit" class="btn btn-success">Valider</button>
 				<a href="${ctx}/proprio/ConsulterAnnonces" class="btn btn-warning">Annuler</a>
 			</div>
+
+<!-- 
+<em><p><label for="services">Selectionnez le(s) service(s)</label></p></em>
+<input type="checkbox" id="gp" name="gp"/> <label for="gp">Garde chez propriétaire</label> <br/>
+<input type="checkbox" id="gs" name="gs"/> <label for="gs">Garde chez le sitter</label> <br/>
+<input type="checkbox" id="med" name="med"/> <label for="med">Soins médicaux</label> <br/>
+<input type="checkbox" id="bal" name="bal"/> <label for="bal">Ballade</label> <br/>
+<input type="checkbox" id="mas" name="mas"/> <label for="mas">Massage</label> <br/>
+<input type="checkbox" id="to" name="to"/> <label for="to">Toilettage</label> <br/>
+<input type="checkbox" id="ali" name="ali"/> <label for="ali">Alimentaire</label>
+ -->
+
 	
 </div>
 
