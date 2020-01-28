@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,10 +14,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Annonce;
+import model.Reponse;
 import model.Sitter;
 import repositories.AnnonceRepository;
 import repositories.CompteRepository;
 import repositories.ReponseRepository;
+import services.ProprioService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-context.xml"})
@@ -34,11 +35,32 @@ public class TestDaoAnnonce {
 
 	@Autowired
 	private CompteRepository compteRepository;
+	
+	@Autowired
+	private ProprioService proprioService;
 
 //	@NamedQuery(name="Annonce.selectAllWithStatut0",query="select a from Annonce a where a.statut=0")}) 
     
+	 //@Test
+	 public void selectReponsesRefusees() {
+		 List<Reponse> list =reponseRepository.selectReponsesRefusees(100,1);
+		 System.out.println(list);
+		 System.out.println(list.get(0).getMessage());
+		 System.out.println(list.get(1).getMessage());
+		 System.out.println(list.get(2).getMessage());
+	 }
+	 
+	//@Test
+	public void testSupprReponsesRefusees() {
+		proprioService.supprReponsesRefusees(100,1);
+	}	 
 	
-    @Test
+	//@Test
+	public void testValiderSitter() {
+		proprioService.validerSitter(100,1);
+	}
+	
+    //@Test
     public void testSelectSittersByReponseValidee() {
     	List<Sitter> list = compteRepository.selectSittersByReponseValidee(100);
         System.out.println(list);
@@ -50,6 +72,8 @@ public class TestDaoAnnonce {
         System.out.println(list);
     }
 	
+
+    
     //@Test
     public void testAfficherAnnoncesTerminees() {
     	List<Annonce> list = annonceRepository.afficherAnnoncesTerminees(11);
