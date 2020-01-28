@@ -75,11 +75,10 @@ public class ProprioService {
 	}
 
 	public void validerSitter(Integer numA, Integer numC) {
-
-//		Optional <Annonce> a=findById(numA);
-//		a.setStatut(1);
-//		annonceRepository.save(a);
-
+		Optional<Annonce> a=annonceRepository.findById(numA);
+		
+		a.setStatut(1);
+		annonceRepository.save(a);
 		proprioService.supprReponsesRefusees(numA, numC);
 	}
 //

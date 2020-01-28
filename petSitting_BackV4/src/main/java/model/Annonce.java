@@ -34,21 +34,29 @@ public class Annonce {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqAnnonce") 
 	private Integer numA ;
+	
 	@Column(length=500,nullable=false)
 	private String titre;
+	
 	@Column(length=1000,nullable=false, name="message")
 	private String message;
+	
 	@Column
 	private Double noteP;
+	
 	@Column
 	private Double noteS;
+	
 	@Column
-	private int statut;
+	private Integer statut;
+	
 	@Column
 	private Integer numC;
+	
 	@Column(name="key")
 	@OneToMany(mappedBy="key.annonce") //fausse erreur. Coonexion virtuelle, ne modifie pas la table
 	private Set<Annonce_Service> annonce_service;
+	
 	@Column(name="key")
 	@OneToMany(mappedBy="key.annonce") //fausse erreur. Coonexion virtuelle, ne modifie pas la table
 	private Set<Reponse> reponse;
@@ -131,11 +139,11 @@ public class Annonce {
 		this.noteS = noteS;
 	}
 
-	public int getStatut() {
+	public Integer getStatut() {
 		return statut;
 	}
 
-	public void setStatut(int statut) {
+	public void setStatut(Integer statut) {
 		this.statut = statut;
 	}
 
