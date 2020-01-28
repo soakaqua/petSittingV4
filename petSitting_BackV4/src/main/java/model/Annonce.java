@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
@@ -89,7 +91,7 @@ public class Annonce {
 		this.annonce_service = null;
 	}
 
-	public int getNumA() {
+	public Integer getNumA() {
 		return numA;
 	}
 
@@ -137,7 +139,7 @@ public class Annonce {
 		this.statut = statut;
 	}
 
-	public int getNumC() {
+	public Integer getNumC() {
 		return numC;
 	}
 
