@@ -21,9 +21,10 @@ public class ServiceService {
 			Optional<model.Service>opt=servicerepository.findById(s.getNumSer());
 			serviceEnBase=opt.get();
 			serviceEnBase.setNomSer((s.getNomSer()!=null)?s.getNomSer():serviceEnBase.getNomSer());
-			serviceEnBase.setPrix((s.getPrix());
-
+//			serviceEnBase.setPrix((s.getPrix());
 		}
+		return null;
+
 	}
 }
  //@Id
