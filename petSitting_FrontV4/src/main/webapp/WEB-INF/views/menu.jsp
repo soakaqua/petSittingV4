@@ -136,7 +136,7 @@
 
 						Bon retour parmi nous. Que souhaitez-vous faire ? <br /> <br />
 						<ul>
-							<li><a href="sitter?id=1">Consulter les annonces
+							<li><a href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${compte.numC}">Consulter les annonces
 									auxquelles j'ai postulé</a></li>
 							<br />
 							<li><a href="sitter?id=2">Consulter toutes les annonces</a></li>
