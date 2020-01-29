@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import model.*;
-import repositories.*;
+import model.Annonce;
+import repositories.AnnonceRepository;
+import repositories.CompteRepository;
 
 @Controller
 @RequestMapping("/proprio")
@@ -22,17 +23,18 @@ public class ProprioController {
 	@Autowired
 	AnnonceRepository annonceRepository;
 	
-	@GetMapping("/proprio/consulterAnnonces")
-	public String reditectConsulterAnnonces(@RequestParam(name="numC") Integer numC) {
-		return "proprio/consulterAnnonces";
+	@GetMapping("/consulterAnnonces")
+	public ModelAndView reditectConsulterAnnonces(@RequestParam(name="numC") Integer numC) {
+		return new ModelAndView("proprio/consulterAnnonces","annonces", annonceRepository.selectAnnonceByProprio(numC));
+		//return "proprio/consulterAnnonces";
 	}
 	
-	@GetMapping("/proprio/modifierAnnonce")
+	@GetMapping("/modifierAnnonce")
 	public String reditectModifierAnnonce(@RequestParam(name="numC") Integer numC) {
 		return "proprio/modifierAnnonce";
 	}
 	
-	@GetMapping("/proprio/publierAnnonce")
+	@GetMapping("/publierAnnonce")
 	public String reditectPublierAnnonce(@RequestParam(name="numC") Integer numC) {
 		return "proprio/publierAnnonce";
 	}
