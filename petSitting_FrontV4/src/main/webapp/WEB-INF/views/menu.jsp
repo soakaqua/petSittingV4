@@ -70,9 +70,11 @@
 					<div id="banderole" class="col-2">
 						<br />
 						<h4 style="font-size: 23; color: white">Menu</h4>
-						<br /> <a href="/proprio/consulterAnnonces"> Consulter mes annonces</a> <br />
-						<br /> <a href="/proprio/modifierAnnonce">Modifier une annonce</a> <br /> <br />
-						<a href="/proprio/publierAnnonce">Publier une annonce</a> <br /> <br /> <a
+										<c:url var="action" value="/personne/saveEleve"></c:url>
+						
+						<br /> <a  href="/proprio/consulterAnnonces?numC=${compte.numC}"> Consulter mes annonces</a> <br />
+						<br /> <a href="/proprio/modifierAnnonce?numC=${compte.numC}">Modifier une annonce</a> <br /> <br />
+						<a href="/proprio/publierAnnonce?numC=${compte.numC}">Publier une annonce</a> <br /> <br /> <a
 							href="proprio?id=4">Valider un sitter</a> <br /> <br /> <a
 							href="proprio?id=5">Noter un sitter</a> <br /> <br /> <a
 							href="accueil">Me déconnecter</a> <br />
@@ -89,11 +91,11 @@
 						<p>
 							Bon retour parmi nous. Que souhaitez-vous faire ? <br /> <br />
 						<ul>
-							<li><a href="proprio?id=1"> Consulter mes annonces</a></li>
+							<li><a href="/proprio/consulterAnnonces?numC=${compte.numC}"> Consulter mes annonces</a></li>
 							<br />
-							<li><a href="proprio?id=2">Modifier une annonce</a></li>
+							<li><a href="/proprio/modifierAnnonce?numC=${compte.numC}">Modifier une annonce</a></li>
 							<br />
-							<li><a href="proprio?id=3">Publier une annonce</a></li>
+							<li><a href="/proprio/publierAnnonce?numC=${compte.numC}">Publier une annonce</a></li>
 							<br />
 							<li><a href="proprio?id=4">Valider un pet-sitter sur une
 									annonce</a></li>
@@ -119,7 +121,7 @@
 						<li><a href="sitter?id=1">Consulter les annonces
 								auxquelles j'ai postulé</a></li> <br />
 						<li><a href="sitter?id=2">Consulter toutes les annonces</a></li> <br />
-						<li><a href="sitter?id=3">Postuler à une annonce</a></li> <br />
+						<li><a href="sitter/postulerAnnonce?numC=${compte.numC}">Postuler à une annonce</a></li> <br />
 						<li><a href="sitter?id=4">Noter un propriétaire sur un
 								petsitting réalisé</a></li> <br />
 						<li><a href="accueil">Me déconnecter</a></li> <br /> <br />
@@ -139,7 +141,7 @@
 							<br />
 							<li><a href="sitter?id=2">Consulter toutes les annonces</a></li>
 							<br />
-							<li><a href="sitter?id=3">Postuler à une annonce</a></li>
+							<li><a href="sitter/postulerAnnonce?numC=${compte.numC}">Postuler à une annonce</a></li>
 							<br />
 							<li><a href="sitter?id=4">Noter un propriétaire sur un
 									petsitting réalisé</a></li>
