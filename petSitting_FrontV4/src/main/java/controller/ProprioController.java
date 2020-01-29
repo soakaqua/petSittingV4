@@ -22,20 +22,34 @@ public class ProprioController {
 	@Autowired
 	AnnonceRepository annonceRepository;
 	
+	@GetMapping("/proprio/ConsulterAnnonces")
+	public String reditectConsulterAnnonces(@RequestParam(name="numC") Integer numC) {
+		return "proprio/ConsulterAnnonces";
+	}
+	
+	@GetMapping("/proprio/ModifierAnnonce")
+	public String reditectModifierAnnonce(@RequestParam(name="numC") Integer numC) {
+		return "proprio/ModifierAnnonce";
+	}
+	
+	@GetMapping("/proprio/PublierAnnonce")
+	public String reditectPublierAnnonce(@RequestParam(name="numC") Integer numC) {
+		return "proprio/PublierAnnonce";
+	}
 
 	@GetMapping("/delete")
-	public ModelAndView delete(@RequestParam(name="numA") Integer numA) {
+	public ModelAndView delete(@RequestParam(name="numA") Integer numA, @RequestParam(name="numC") Integer numC) {
 		annonceRepository.deleteById(numA);
 		return new ModelAndView("redirect:/proprio/ConsulterAnnonces");	
 	}
 	
 	@GetMapping("/add")
-	public ModelAndView add() { 
+	public ModelAndView add(@RequestParam(name="numC") Integer numC) { 
 		return new ModelAndView("proprio/PublierAnnonce","annonce",new Annonce());
 	}
 	
 	@PostMapping("/save")
-	public ModelAndView save(@ModelAttribute Annonce annonce) { 
+	public ModelAndView save(@ModelAttribute Annonce annonce, @RequestParam(name="numC") Integer numC) { 
 		annonceRepository.save(annonce);
 		return new ModelAndView("redirect:/proprio/ConsulterAnnonces"); 
 	}
