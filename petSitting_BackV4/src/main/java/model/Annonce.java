@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
@@ -35,9 +36,11 @@ public class Annonce {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="seqAnnonce") 
 	private Integer numA ;
 	
+	@NotEmpty
 	@Column(length=500,nullable=false)
 	private String titre;
 	
+	@NotEmpty
 	@Column(length=1000,nullable=false, name="message")
 	private String message;
 	
