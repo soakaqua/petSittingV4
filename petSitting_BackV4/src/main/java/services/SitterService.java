@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class SitterService {
 		System.out.println(annonces);
 		return annonces;
 	}
+	
+
+	
 
 	public void postulerAnnonce(Sitter s, Annonce a, String message) {
 		ReponsePK key = new ReponsePK((Sitter) s, a);
@@ -40,6 +44,22 @@ public class SitterService {
 		List<Annonce> annonces = annonceRepository.selectAnnonceBySitter(numC);
 		return annonces;
 
+	}
+	
+	
+	public List<Reponse> afficherReponseBySitterAndAnnonce(Integer numC){
+		
+		List<Annonce> annonces = selectAnnonceBySitter(numC);
+		List<Reponse> reponses = new ArrayList<Reponse>();
+
+		List<Reponse> reptemp = new ArrayList<Reponse>();
+
+		for(int i = 0 ; i<annonces.size(); i++) {
+			reptemp = reponseRepository.selectReponseByNumCNumA(annonces.get(i).getNumA(), numC);
+			reponses.add( reptemp.get(0));
+		}
+		
+		return reponses;
 	}
 
 	public void noterP(Double noteP, Annonce a) {

@@ -19,27 +19,26 @@ public class MenuController {
 	@Autowired
 	CompteRepository compteRepository;
 	
-	@GetMapping("/menu")
-	public ModelAndView menuProprio() {
-		Compte proprio = new Compte();
-		Optional<Compte> opt = compteRepository.findById(101);
-		if(opt.isPresent()) {
-			proprio= opt.get();
-		}
-		
-		return new ModelAndView("menu", "compte", (Proprio) proprio );
-	}
-	
 //	@GetMapping("/menu")
-//	public ModelAndView menuSitter() {
+//	public ModelAndView menuProprio() {
 //		Compte proprio = new Compte();
-//		Optional<Compte> opt = compteRepository.findById(100);
+//		Optional<Compte> opt = compteRepository.findById(101);
 //		if(opt.isPresent()) {
 //			proprio= opt.get();
 //		}
 //		
-//		return new ModelAndView("menu", "compte", (Sitter) proprio );
+//		return new ModelAndView("menu", "compte", (Proprio) proprio );
 //	}
+	
+	@GetMapping("/menu")
+	public ModelAndView menuSitter() {
+		Compte proprio = new Compte();
+		Optional<Compte> opt = compteRepository.findById(100);
+		if(opt.isPresent()) {
+			proprio= opt.get();
+		}
+		return new ModelAndView("menu", "compte", (Sitter) proprio );
+	}
 	
 	@GetMapping("/accueil")
 	public String Accueil() {
