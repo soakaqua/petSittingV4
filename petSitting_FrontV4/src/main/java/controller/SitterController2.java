@@ -69,7 +69,7 @@ public class SitterController2 {
 		ReponsePK pk = new ReponsePK((Sitter) opt1.get(), opt2.get());
 		
 		
-		model.addAttribute("reponse", reponseRepository.findById(pk));
+		model.addAttribute("reponse", reponseRepository.findById(pk).get());
 		model.addAttribute("annonce", opt2.get());
 		return "/sitter/editReponse";
 	}

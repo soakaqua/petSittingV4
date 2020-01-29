@@ -88,22 +88,28 @@
 					<td>${annonce.message}</td>
 				</tr>
 			</table>
-			<p>
-
-			</p>
+			<p></p>
 			<form:form action="${ctx}/sitter/saveReponse" methode="post"
-				modelAttribute="reponse" >
+				modelAttribute="reponse">
 				<div class="form-group">
+				
+
+					<form:label path="key">Votre numéro de réponse : </form:label>
+					<form:input path="key" cssClass="form-control"
+						readonly="true"></form:input>
+						
 					<form:label path="message">Votre réponse : </form:label>
-					<form:input path="message" cssClass="form-control" 
+					<form:input path="message" cssClass="form-control"
 						placeHolder="reponse à l'annonce"></form:input>
-					
+
 				</div>
 
-			<div class="form-group">
-				<button type="submit" class="btn btn-success">envoyer</button>
-				<a href="${ctx}/sitter/afficherAnnoncesBySitter" class="btn btn-warning">annuler</a>
-			</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-success">envoyer</button>
+					
+					<a href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${reponse.key.compte.numC}"
+						class="btn btn-warning">annuler</a>
+				</div>
 
 
 
