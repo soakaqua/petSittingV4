@@ -12,7 +12,8 @@ import javax.persistence.Version;
 @Table(name = "reponse")
 
 @NamedQueries({
-	@NamedQuery(name="Reponse.selectReponsesRefusees",query="select r from Reponse r left join fetch r.key.annonce ann left join fetch r.key.sitter sit where ann.numA=?1 and sit.numC!=?2")
+	@NamedQuery(name="Reponse.selectReponsesRefusees",query="select r from Reponse r left join fetch r.key.annonce ann left join fetch r.key.sitter sit where ann.numA=?1 and sit.numC!=?2"),
+	@NamedQuery(name="Reponse.selectReponseByNumCNumA",query="select r from Reponse r left join fetch r.key.annonce ann left join fetch r.key.sitter sit where ann.numA=?1 and sit.numC=?2"),
 })
 
 public class Reponse {
