@@ -72,10 +72,7 @@
 	<br/><br/>
 	
 	<!-- FORMULAIRE -->	
-	<form:form action="add" method="post" modelAttribute="personne">
-		<!--  
-		<form:hidden path="version"/> 
-		-->
+	<form:form action="savePubli?numC=${numC}" method="get" modelAttribute="annonce">
 
 			<!-- CHAMPS DE CREATTION D'ANNONCE -->
 			<div class="form-group">
@@ -87,27 +84,21 @@
 			</div>
 			
 			<div class="form-group">
-				<form:label path="msg">Message</form:label>
-				<form:textarea path="msg" placeholder="Entrez un message" rows="5" cols="60"></form:textarea>
-				<form:errors path="msg" cssClass="alert alert-danger">
+				<form:label path="message">  Message</form:label>
+				<br/>
+				<form:textarea path="message" placeholder="Entrez un message" row="5" cols="60" ></form:textarea>
+				<form:errors path="message" cssClass="alert alert-danger">
 					<div class="alert alert-danger"> Champ obligatoire </div>
 				</form:errors>   
 			</div>
-			
-			<div class="form-group">
-				<form:label path="services">Selectionnez le(s) service(s)</form:label>
-				<c:forEach items="${services}">
-					<form:checkbox path="services.nom" items="${services}" itemValue="nom" itemLabel="nom" cssClass="form-control"/>
-				</c:forEach>
-			</div>
-	
-	</form:form>
 	
 				<!-- BOUTONS DE VALIDATION OU ANNULATION -->
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">Valider</button>
-				<a href="${ctx}/proprio/consulterAnnonces" class="btn btn-warning">Annuler</a>
+				<a href="${ctx}/proprio/consulterAnnonces?numC=${numC}" class="btn btn-warning">Annuler</a>
 			</div>
+			
+		</form:form>
 
 <!-- 
 <em><p><label for="services">Selectionnez le(s) service(s)</label></p></em>
@@ -119,6 +110,7 @@
 <input type="checkbox" id="to" name="to"/> <label for="to">Toilettage</label> <br/>
 <input type="checkbox" id="ali" name="ali"/> <label for="ali">Alimentaire</label>
  -->
+
 
 	
 </div>

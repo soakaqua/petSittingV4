@@ -2,12 +2,11 @@ package repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import model.Annonce;
-import model.Reponse;
-import model.Sitter;
 
 public interface AnnonceRepository extends JpaRepository<Annonce, Integer> {
  
@@ -23,6 +22,8 @@ public interface AnnonceRepository extends JpaRepository<Annonce, Integer> {
 	
 	public List<Annonce>findAllByNumA(Integer numA);
 	
+	@Transactional
+	public void deleteByNumA(Integer numA);
 
 }
 

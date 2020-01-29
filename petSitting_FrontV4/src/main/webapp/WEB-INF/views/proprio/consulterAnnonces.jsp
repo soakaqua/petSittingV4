@@ -68,31 +68,46 @@
 <p> <h3> Consulter mes annonces </h3> </p> 
 
 	Voici les annonces que vous avez publiées : <br/><br/>
+
+<c:choose>
 	
-<table class="table" border="1">
-			<tr>
-				<th>Titre</th>
-				<th>Message</th>
+	<c:when test="${annonces.isEmpty()}">
+		<div>
+			<br/>
+			<em>Vous n'avez aucune annonce en cours</em>
+		</div>
+	</c:when>
 
-				<th>Statut</th>
-			</tr>
-			
-			<c:forEach items ="${annonces}" var="a">
+	<c:otherwise>
+		<div>	
+			<table class="table">
 				<tr>
-					<!-- COLONNES -->
-					<td>${a.titre}</td>
-					<td>${a.message}</td>
-
-					<td>${a.statut}</td>	
-					
-					<!-- BOUTONS -->				
-					<td><a href="${ctx}/proprio/save?numA=${a.numA}?numC=${numC}" class="btn btn-primary">Modifier</a></td>
-					<td><a href="${ctx}/proprio/delete?numA=${a.numA}?numC=${numC}" class="btn btn-danger">Supprimer</a></td>									
+					<th>Titre</th>
+					<th>Message</th>
+	
+					<th>Statut</th>
 				</tr>
 				
-			</c:forEach>
-		</table>
-<!-- http://localhost:8080/petSitting_FrontV4/proprio/consulterAnnonces?numC=101 -->	
+				<c:forEach items ="${annonces}" var="a">
+					<tr>
+						<!-- COLONNES -->
+						<td>${a.titre}</td>
+						<td>${a.message}</td>
+	
+						<td>${a.statut}</td>	
+						
+						<!-- BOUTONS -->				
+						<td><a href="${ctx}/proprio/saveModif?numA=${a.numA}&numC=${numC}" class="btn btn-primary">Modifier</a></td>
+						<td><a href="${ctx}/proprio/delete?numA=${a.numA}&numC=${numC}" class="btn btn-danger">Supprimer</a></td>									
+					</tr>
+					
+				</c:forEach>
+			</table>
+	<!-- http://localhost:8080/petSitting_FrontV4/proprio/consulterAnnonces?numC=101 -->	
+		</div>
+	</c:otherwise>	
+	
+</c:choose>
 	
 </div>
 
