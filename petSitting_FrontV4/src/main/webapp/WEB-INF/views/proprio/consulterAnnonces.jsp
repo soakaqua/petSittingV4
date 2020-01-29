@@ -1,21 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<!-- CHEMIN ABSOLU avec ctx -->
+<!-- bootstrap -->
 <c:set var="ctx" value="${pageContext.servletContext.contextPath}"></c:set>
-<link rel="stylesheet" href="${ctx}/bootstrap/css/bootstrap.min.css"/> 
-<script type="text/javascript" src="${ctx}/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${ctx}/bootstrap/css/bootstrap.min.css">
+<!-- lien bootstrap js local -->
+<script rel="stylesheet" src="${ctx}/bootstrap/js/bootstrap.min.js"></script>
 
-<link rel="icon" type="image/png" href="logo.jpg" />
-<link rel="stylesheet" type="text/css" href="CSS petsitting.css">
+<!-- CSS -->
+  <link rel="stylesheet" type="text/css"
+	href="${ctx}/style/CSSpetsitting.css">
 
 
 <title>PetSitting</title>
@@ -70,27 +73,26 @@
 			<tr>
 				<th>Titre</th>
 				<th>Message</th>
-				<th>Services</th>
+
 				<th>Statut</th>
-				<th></th>
 			</tr>
 			
-			<c:forEach items ="${ listeAnnonce }" var="a">
+			<c:forEach items ="${annonces}" var="a">
 				<tr>
 					<!-- COLONNES -->
 					<td>${a.titre}</td>
-					<td>${a.msg}</td>
-					<td>${a.service}</td>
+					<td>${a.message}</td>
+
 					<td>${a.statut}</td>	
 					
 					<!-- BOUTONS -->				
-					<td><a href="${ctx}/proprio/save?numA=${a.numA}" class="btn btn-primary">Modifier</a></td>
-					<td><a href="${ctx}/proprio/delete?numA=${a.numA}" class="btn btn-danger">Supprimer</a></td>									
+					<td><a href="${ctx}/proprio/save?numA=${a.numA}?numC=${numC}" class="btn btn-primary">Modifier</a></td>
+					<td><a href="${ctx}/proprio/delete?numA=${a.numA}?numC=${numC}" class="btn btn-danger">Supprimer</a></td>									
 				</tr>
 				
 			</c:forEach>
 		</table>
-<!-- http://localhost:8080/petSitting_FrontV4/proprio/ConsulterAnnonces?numC=101 -->	
+<!-- http://localhost:8080/petSitting_FrontV4/proprio/consulterAnnonces?numC=101 -->	
 	
 </div>
 
