@@ -2,7 +2,6 @@ package services;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,28 +43,33 @@ public class SitterService {
 	}
 
 	public void noterP(Double noteP, Annonce a) {
-		Annonce annonce = null;
-		int numC = a.getNumC();
-		annonce.setNoteP(noteP);
-		annonceRepository.save(annonce);
+		
+		a.setNoteP(noteP);
+		annonceRepository.save(a);
 
 	}
 
-  public Double getNoteMoyenne(Proprio p) {
-  int numC=p.getNumC();
-  Double moyenne=null;
-  //moyenne.get();
-  return moyenne;
 
 
+
+
+//	public Double getNoteMoyenne(Proprio p) {
+//		List<Annonce> annonces = annonceRepository.afficherAnnoncesTerminees(p.getNumC());
+//		Double moy = 0.0;
+//		for (Annonce annonce : annonces) {
+//			moy += annonce.getNoteP();
+//		}
+//		return moy / annonces.size();
+//	}
+//
+// public List<Annonce> afficherAnnoncesTerminees(Integer numC); //faut ajouter cette fonction dans annonceRepository pour que je puisse l 'appeler
+	
+	
 }
-	
-}	
-	
-	
+
 //   public void noterP(Double noteP, Annonce a) {
 //       EntityManager em=JpaContext.getInstance().createEntityManager();
-//       DaoAnnonce daoAnnonce = DaoAnnonceFactory.getInstance(); // attention : supprimer ligne dans dao.
+//       DaoAnnonce daoAnnonce = DaoAnnonceFactory.getInstance();  attention : supprimer ligne dans dao.
 //       Annonce annonce=null;
 //       int numC = a.getNumC();
 //       Query query=em.createQuery("select a from Annonce a where a.numC=:numC and a.statut=1");
@@ -75,7 +79,7 @@ public class SitterService {
 //       daoAnnonce.update(annonce);
 //       em.close();
 //   }
-
+//
 //   public Double getNoteMoyenne(Proprio p) {
 //       EntityManager em=JpaContext.getInstance().createEntityManager();
 //       int numC=p.getNumC();
@@ -87,4 +91,3 @@ public class SitterService {
 //
 //
 //   }
-
