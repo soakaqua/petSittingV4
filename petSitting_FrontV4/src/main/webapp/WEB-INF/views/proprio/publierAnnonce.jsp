@@ -103,7 +103,7 @@
 				<!-- BOUTONS DE VALIDATION OU ANNULATION -->
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">Valider</button>
-				<a href="${ctx}/proprio/ConsulterAnnonces" class="btn btn-warning">Annuler</a>
+				<a href="${ctx}/proprio/consulterAnnonces" class="btn btn-warning">Annuler</a>
 			</div>
 
 <!-- 
