@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import model.Annonce;
 import repositories.AnnonceRepository;
 import repositories.CompteRepository;
+import services.AnnonceService;
 
 @Controller
 @RequestMapping("/proprio")
@@ -26,6 +29,9 @@ public class ProprioController {
 	
 	@Autowired
 	AnnonceRepository annonceRepository;
+	
+	@Autowired
+	AnnonceService annonceService;
 	
 	@GetMapping("/consulterAnnonces")
 	public String reditectConsulterAnnonces(Integer numC, Model model) {	
@@ -53,34 +59,38 @@ public class ProprioController {
 		return new ModelAndView("redirect:/proprio/consulterAnnonces", "numC", numC);	
 	}
 	
-	@GetMapping("/savePubli")
-	public String savePubli(@ModelAttribute ("annonce") @Valid Annonce annonce, BindingResult br, Integer numC, Model model) { 
-		if(br.hasErrors())
-			{return "proprio/publierAnnonce";}
-		annonceRepository.save(annonce);
-		return "redirect:/proprio/consulterAnnonces"; 
-	}
-	
 	@GetMapping("/saveModif")
-	public String saveModif(@ModelAttribute ("annonce") @Valid Annonce annonce, BindingResult br, Integer numC, Model model) { 
+	public String saveModif(@ModelAttribute ("annonce") @Valid Annonce annonce, Integer numA, BindingResult br, Model model, HttpSession session) { 
 		if(br.hasErrors())
 			{return "proprio/publierAnnonce";}
-		annonceRepository.save(annonce);
-		return "redirect:/proprio/consulterAnnonces"; 
-	}
+		else {
+			Optional<Annonce> opt=annonceRepository.findById(numA);
+			Annonce a=null;
+			if(opt.isPresent()) {
+				a=opt.get();
+				a.setNumC((Integer)session.getAttribute("numC"));
+				a.setStatut(0);
+				annonceService.save(a);
+				}
+			return "redirect:/proprio/consulterAnnonces?numC="+session.getAttribute("numC"); 
+			}
+	}	//   http://localhost:8080/petSitting_FrontV4/proprio/saveModif?numA=145&numC=101
 	
-//	@PostMapping("/form")
-//	public String afficheForm(@ModelAttribute Identifiants id ,HttpSession session) { //pour passer les identifiants en param ; attention : pas de classe abstraite avec @model 
-//// @ModelAttribute instancie un objet "Identifiant" et prend les parametres qui ont le meme nom que ses attributs
-//
-//		
-//		session.setAttribute("identifiants", id);
-//
-////		session.setAttribute("mail", mail);
-////		session.setAttribute("mdp", mdp);
-//		
-//		return "showform";
-//	}
+	@GetMapping("/savePubli")
+	public String savePubli(@ModelAttribute ("annonce") @Valid Annonce annonce, BindingResult br, Model model, HttpSession session) { 
+		if(br.hasErrors())
+			{return "proprio/modifierAnnonce";}
+		else {
+			annonce.setNumC((Integer)session.getAttribute("numC"));
+			annonce.setStatut(0);
+			annonceService.save(annonce);
+			return "redirect:/proprio/consulterAnnonces?numC="+session.getAttribute("numC"); 
+			}
+	}
+	//      http://localhost:8080/petSitting_FrontV4/proprio/consulterAnnonces?numC=101
+	
+	
+	
 
 
 }

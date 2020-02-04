@@ -72,8 +72,9 @@
 	<br/><br/>
 	
 	<!-- FORMULAIRE -->	
-	<form:form action="savePubli?numC=${numC}" method="get" modelAttribute="annonce">
-
+	<form:form action="savePubli?numC=${sessionScope.numC}" method="get" modelAttribute="annonce">
+	
+			<form:hidden path="numC"/>
 			<!-- CHAMPS DE CREATTION D'ANNONCE -->
 			<div class="form-group">
 				<form:label path="titre">Titre</form:label>
@@ -95,7 +96,7 @@
 				<!-- BOUTONS DE VALIDATION OU ANNULATION -->
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">Valider</button>
-				<a href="${ctx}/proprio/consulterAnnonces?numC=${numC}" class="btn btn-warning">Annuler</a>
+				<a href="${ctx}/proprio/consulterAnnonces?numC=${session.numC}" class="btn btn-warning">Annuler</a>
 			</div>
 			
 		</form:form>

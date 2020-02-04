@@ -21,28 +21,28 @@ public class MenuController {
 	@Autowired
 	CompteRepository compteRepository;
 	
-//	@GetMapping("/menu")
-//	public ModelAndView menuProprio(HttpSession session) {
-//		Compte proprio = new Compte();
-//		Optional<Compte> opt = compteRepository.findById(101);
-//		if(opt.isPresent()) {
-//			proprio= opt.get();
-//		}
-//		session.setAttribute("numC", proprio.getNumC());
-
-//		return new ModelAndView("menu", "compte", (Proprio) proprio );
-//	}
-	
 	@GetMapping("/menu")
-	public ModelAndView menuSitter(HttpSession session) {
+	public ModelAndView menuProprio(HttpSession session) {
 		Compte proprio = new Compte();
-		Optional<Compte> opt = compteRepository.findById(100);
+		Optional<Compte> opt = compteRepository.findById(101);
 		if(opt.isPresent()) {
 			proprio= opt.get();
 		}
 		session.setAttribute("numC", proprio.getNumC());
-		return new ModelAndView("menu", "compte", (Sitter) proprio );
+
+		return new ModelAndView("menu", "compte", (Proprio) proprio );
 	}
+	
+//	@GetMapping("/menu")
+//	public ModelAndView menuSitter(HttpSession session) {
+//		Compte proprio = new Compte();
+//		Optional<Compte> opt = compteRepository.findById(100);
+//		if(opt.isPresent()) {
+//			proprio= opt.get();
+//		}
+//		session.setAttribute("numC", proprio.getNumC());
+//		return new ModelAndView("menu", "compte", (Sitter) proprio );
+//	}
 	
 	@GetMapping("/accueil")
 	public String Accueil() {
