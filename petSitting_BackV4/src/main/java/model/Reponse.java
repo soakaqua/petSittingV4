@@ -48,7 +48,7 @@ public class Reponse {
 		return message;
 	}
 
-	public void setMessage(String reponse) {
+	public void setMessage(String message) {
 		this.message = message;
 	}
 

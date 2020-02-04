@@ -57,7 +57,7 @@ public class SitterController2 {
 		Optional<Annonce> opt2 = annonceRepository.findById(numA);	
 		ReponsePK pk = new ReponsePK((Sitter) opt1.get(), opt2.get());
 		reponseRepository.deleteById(pk);
-		model.addAttribute("numC", pk.getCompte().getNumC());
+		model.addAttribute("numC", pk.getSitter().getNumC());
 		return "redirect:/sitter/afficherAnnoncesBySitter";
 	}
 	
@@ -74,10 +74,11 @@ public class SitterController2 {
 		return "/sitter/editReponse";
 	}
 	
-	@PostMapping("/sitter/saveReponse")
+	@GetMapping("/sitter/saveReponse")
 	public String saveReponse(@ModelAttribute("reponse") Reponse reponse, Model model) {
+		
 		reponseService.save(reponse);
-		model.addAttribute("numC", reponse.getKey().getCompte().getNumC());
+		model.addAttribute("numC", reponse.getKey().getSitter().getNumC());
 		return "redirect:/sitter/afficherAnnoncesBySitter";
 		
 	}

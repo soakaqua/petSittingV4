@@ -54,20 +54,19 @@
 			<br />
 			<h4 style="font-size: 23; color: white">Menu</h4>
 			<br /> <a
-				href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${compte.numC}">
+				href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${sessionScope.numC}">
 				Consulter mes annonces</a> <br /> <br /> <a
 				href="Sitter toutesAnnonces.html">Consulter toutes les annonces
 			</a> <br /> <br /> <a
-				href="${ctx}/sitter/postulerAnnonce?numC=${compte.numC}">Postuler
+				href="${ctx}/sitter/postulerAnnonce?numC=${sessionScope.numC}">Postuler
 				à une annonce</a> <br /> <br /> <a href="Sitter noterP.html">Noter
 				un propriétaire</a> <br /> <br /> <a href="Main page.html">Accueil</a>
-			<br /> <br /> <a href="#deco">Me deconnecter </a> <br /> <br />
+			<br /> <br /> <a href="accueil">Me deconnecter </a> <br /> <br />
 
 
 		</div>
 
 		<div id="textePrincipal" class="col-8">
-
 			<p>
 			<h2>Pet-sitter > Consulter mes annonces</h2>
 			</p>
@@ -89,25 +88,26 @@
 				</tr>
 			</table>
 			<p></p>
-			<form:form action="${ctx}/sitter/saveReponse" methode="post"
+			<form:form action="${ctx}/sitter/saveReponse" method="get"
 				modelAttribute="reponse">
+				<form:hidden path="key.sitter.numC"/>
+				<form:hidden path="key.annonce.numA"/>
+				<form:hidden path="version"/>
+				
 				<div class="form-group">
 				
-
-					<form:label path="key">Votre numéro de réponse : </form:label>
-					<form:input path="key" cssClass="form-control"
-						readonly="true"></form:input>
 						
 					<form:label path="message">Votre réponse : </form:label>
 					<form:input path="message" cssClass="form-control"
 						placeHolder="reponse à l'annonce"></form:input>
+
 
 				</div>
 
 				<div class="form-group">
 					<button type="submit" class="btn btn-success">envoyer</button>
 					
-					<a href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${reponse.key.compte.numC}"
+					<a href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${reponse.key.sitter.numC}"
 						class="btn btn-warning">annuler</a>
 				</div>
 

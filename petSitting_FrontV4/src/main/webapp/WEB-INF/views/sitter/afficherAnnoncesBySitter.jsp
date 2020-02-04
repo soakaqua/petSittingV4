@@ -54,11 +54,11 @@
 			<br />
 			<h4 style="font-size: 23; color: white">Menu</h4>
 			<br /> <a
-				href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${compte.numC}">
+				href="${ctx}/sitter/afficherAnnoncesBySitter?numC=${sessionScope.numC}">
 				Consulter mes annonces</a> <br /> <br /> <a
 				href="Sitter toutesAnnonces.html">Consulter toutes les annonces
 			</a> <br /> <br /> <a
-				href="${ctx}/sitter/postulerAnnonce?numC=${compte.numC}">Postuler
+				href="${ctx}/sitter/postulerAnnonce?numC=${sessionScope.numC}">Postuler
 				à une annonce</a> <br /> <br /> <a href="Sitter noterP.html">Noter
 				un propriétaire</a> <br /> <br /> <a href="Main page.html">Accueil</a>
 			<br /> <br /> <a href="#deco">Me deconnecter </a> <br /> <br />
@@ -90,10 +90,10 @@
 						<td>${a.message}</td>
 						<td>${reponse[cpt.index].message}</td>
 						<td><a
-							href="${ctx}/sitter/editReponse?numC=${reponse[cpt.index].key.compte.numC}&numA=${reponse[cpt.index].key.annonce.numA}"
+							href="${ctx}/sitter/editReponse?numC=${reponse[cpt.index].key.sitter.numC}&numA=${reponse[cpt.index].key.annonce.numA}"
 							class="btn btn-info">editer</a></td>
 						<td><a
-							href="${ctx}/sitter/delete?numC=${reponse[cpt.index].key.compte.numC}&numA=${reponse[cpt.index].key.annonce.numA}"
+							href="${ctx}/sitter/delete?numC=${reponse[cpt.index].key.sitter.numC}&numA=${reponse[cpt.index].key.annonce.numA}"
 							class="btn btn-warning">supprimer</a></td>
 					</tr>
 				</c:forEach>

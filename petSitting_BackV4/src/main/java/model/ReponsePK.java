@@ -27,11 +27,13 @@ public class ReponsePK implements Serializable {
 		this.annonce = annonce;
 	}
 
-	public Compte getCompte() {
+
+
+	public Sitter getSitter() {
 		return sitter;
 	}
 
-	public void setCompte(Compte compte) {
+	public void setSitter(Sitter sitter) {
 		this.sitter = sitter;
 	}
 
